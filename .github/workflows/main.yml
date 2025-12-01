@@ -1,26 +1,17 @@
-- name: 🛠️ Setup Node.js
+# ... (Part of the build-and-test job)
+steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # -----------------------------------------------------------------
-      # NEW STEP: Install Dependencies
-      # -----------------------------------------------------------------
-      - name: 📦 Install Dependencies
-        run: npm install
-
-      # -----------------------------------------------------------------
-      # Existing Step: Build Stage
-      # -----------------------------------------------------------------
       - name: ⚙️ CI: Run Linting / Build Placeholder
-        run: |
-          echo "Simulating build/compilation..."
-          echo "CI: Build stage complete."
 
-      # -----------------------------------------------------------------
-      # Existing Step: Run Tests
-      # -----------------------------------------------------------------
-      - name: ✅ CI: Run Unit Tests
-        run: |
-          echo "Running unit tests for all features..."
-          echo "All business logic tests passed."
+
+
+
+      
+# ... (rest of the file)
