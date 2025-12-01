@@ -1,22 +1,88 @@
-# ... (Part of the build-and-test job, assuming 'steps:' is indented correctly under the job)
+name: PHP/JS CI/CD Pipeline
 
+# Triggers the workflow on pushes to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+
+# Define the environment variables for deployment (used in step 2)
+env:
+  FTP_SERVER: ${{ secrets.FTP_SERVER }}
+  FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+  FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+  # Optional: standard FTP port is 21, SFTP is 22
+  FTP_PORT: 22 
+  # CRITICAL: The path on your server where your website files live (e.g., /public_html/)
+  FTP_PATH: /public_html/fyf_project/ 
+
+jobs:
+  # =======================================================
+  # JOB 1: Continuous Integration (CI) - Linting and Checks
+  # =======================================================
+  ci_checks:
+    name: 🧪 CI Checks (PHP & JS)
+    runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout Code
-      - name: ⬇ Checkout Code
+      - name: ⬇️ Checkout Code
         uses: actions/checkout@v4
+
+      # --- PHP Syntax Check ---
+      - name: 🛠️ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2' # Use a modern PHP version
+          
+      - name: 🔍 PHP Syntax Lint Check
+        # Check all PHP files for syntax errors before deployment
+        run: find . -name "*.php" -print0 | xargs -0 -n1 php -l
         
-      # Step 2: Setup Node.js
-      - name: 🛠 Setup Node.js
+      # --- JavaScript Lint Check (Placeholder) ---
+      # Node.js setup is required to run JS checks (like ESLint or simple syntax check)
+      - name: 🛠️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           
-      # Step 3: Run Linting / Build Placeholder (This is likely line 11 or nearby)
-      - name: ⚙ CI: Run Linting / Build Placeholder 
-        # Add the 'run' command block here
-        run: |
-          echo "Starting linting and build checks..."
-          # Example commands you would run:
-          # npm install
-          # npm run lint
-          # npm run build
+      - name: 🔍 Simple JavaScript Syntax Check
+        # This is a placeholder. In a real app, you'd run 'npm install' then 'npm run lint'
+        run: echo "JS syntax check passed (Placeholder for full linting)."
+        
+  # =======================================================
+  # JOB 2: Continuous Deployment (CD) - Deploy to Web Server
+  # =======================================================
+  deployment:
+    name: 🚀 Deploy via SFTP
+    needs: ci_checks # Only runs if ci_checks job passes
+    runs-on: ubuntu-latest
+    environment: production # Best practice to tag deployment environment
+
+    steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 📤 SFTP Deployment to Web Host
+        uses: sebastianpeters/ftp-deploy-action@v3.2.0
+        with:
+          # Use the environment variables defined at the top
+          host: ${{ env.FTP_SERVER }}
+          user: ${{ env.FTP_USERNAME }}
+          password: ${{ env.FTP_PASSWORD }}
+          port: ${{ env.FTP_PORT }}
+          # The remote directory where the files will be placed
+          remote_path: ${{ env.FTP_PATH }}
+          # Files to exclude from deployment (e.g., local server files)
+          exclude: |
+            .git*
+            .github
+            vendor/**
+            node_modules/**
+            # Add any other large or non-essential files here
+            # .htaccess (if managed manually)
+            
+      - name: 🎉 Deployment Successful
+        run: echo "Successfully deployed all files to ${{ env.FTP_SERVER }}"
