@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FindYourFashion - Personalized and engaging clothing shopping experience">
+    <meta name="keywords" content="fashion, clothing, personalized shopping, online store">
+    <title>Accessories - FindYourFashion</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="category.css">
+    
+    <script src="cart.js" type="module"></script>
+    
+    <script src="script.js" type="module"></script>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" title="Go to Home">
+                <img src="logo.png" alt="FindYourFashion Logo" class="logo-image">
+            </a>
+            <span><a href="index.html" title="Go to Home" class="logo-text">FindYourFashion</a></span>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <a href="login-signup.html">User Login</a>
+                <a href="admin-login.html">Admin Login</a>
+                <a href="cart.html" class="cart-link">🛒 Cart (<span id="cart-count">0</span>)</a>
+            </ul>
+        </nav>
+        
+        <marquee id="countdown">  </marquee>
+        <video autoplay muted loop class="hero-video">
+            <source src="FYFvideo1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </header>
+    
+
+<main>
+    <div class="translucent-box">
+        <h1>| Accessories |</h1>
+        <p>Complete your look with our curated selection of accessories, designed to add a touch of luxury and individuality to your style</p>
+    </div>
+    
+    <table class="styled-table">
+        <caption style="font-family: 'Playfair Display', serif;">Catalogue</caption>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Details</th>
+                <th>Price</th>
+                <th>Actions</th> </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="product10.jpg" alt="Check Cashmere Scarf"></td>
+                <td>
+                    <strong>Check Cashmere Scarf</strong><br>
+                </td>
+                <td data-price="760">$760</td>
+                <td>
+                    <a href="sorry.html"><button class="btn-secondary">Buy Now</button></a>
+                    <button class="add-to-cart btn-primary" data-id="10" data-name="Check Cashmere Scarf" data-price="760">Add to Cart</button>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="product11.jpg" alt="Men's David Yurman Curb Chain Necklace in Sterling Silver"></td>
+                <td>
+                    <strong>Men's David Yurman Curb Chain Necklace in Sterling Silver</strong><br>
+                </td>
+                <td data-price="2500">$2500</td>
+                <td>
+                    <a href="sorry.html"><button class="btn-secondary">Buy Now</button></a>
+                    <button class="add-to-cart btn-primary" data-id="11" data-name="Curb Chain Necklace" data-price="2500">Add to Cart</button>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="product12.jpg" alt="OM pendant"></td>
+                <td>
+                    <strong>"OM" pendant </strong><br>
+                    <em>Out of Stock</em>
+                </td>
+                <td data-price="3000">$3000</td>
+                <td>
+                    <button disabled class="btn-secondary"><s>Buy Now</s></button>
+                    <button disabled class="btn-primary">Add to Cart</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+    <footer>
+        <div class="footer-links">
+            <p>&copy; 2024 FindYourFashion</p>
+            <a href="index.html" title="Back to Home">Back to Home</a> | 
+            <a href="feedback.html" title="Provide Feedback">Feedback</a> | 
+            <a href="mailto:info@findyourfashion.com" title="Email Us">Contact Us</a>
+        </div>
+    </footer>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+.translucent-box {
+    text-align: center; /* Centers the content */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 2rem; /* Adds spacing inside the box */
+    margin: 2rem auto; /* Centers the box and adds vertical spacing */
+    max-width: 800px; /* Limits the box width */
+    border-radius: 10px; /* Smooths the corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
+
+/* Styling for the heading */
+.translucent-box h1 {
+    font-family: 'Playfair Display', serif; /* Luxurious serif font */
+    font-size: 2.5rem; /* Adjusts heading size */
+    color: #333; /* Dark text color for contrast */
+    margin-bottom: 1rem; /* Adds spacing below the heading */
+}
+
+/* Styling for the paragraph */
+.translucent-box p {
+    font-family: 'Playfair Display', serif; /* Matches the font with the heading */
+    font-size: 1.2rem; /* Adjusts paragraph text size */
+    color: #555; /* Softer text color */
+    line-height: 1.6; /* Improves readability */
+}
+
+ table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            opacity: 0.8;
+            background-color: #fff;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            font-family: 'Playfair Display', serif; 
+        }
+        th {
+            background-color: #eee;
+            font-family: 'Playfair Display', serif; 
+        }
+        caption {
+            caption-side: top;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        img {
+            
+
+        width: 100%; /* Makes the image fill the cell's width */
+        height: auto; /* Maintains the aspect ratio */
+        max-height: 150px; /* Restricts the maximum height */
+        object-fit: contain; /* Ensures the entire image is visible within the cell */
+        border-radius: 5px; /* Optional: Adds rounded corners */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for depth */
+            }
+
+        
+        button {
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            color: #fff;
+            background-color: #444;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #666;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            table {
+                font-size: 0.9em;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                
+                font-size: 0.9em;
+            }
+            table, th, td {
+                font-size: 0.8em;
+                padding: 6px;
+            }
+            img {
+                max-width: 60px;
+            }
+        }

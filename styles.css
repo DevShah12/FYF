@@ -1,0 +1,314 @@
+/* Global Styles */
+body {
+    font-family: 'Playfair Display', serif; /* Luxurious font */
+    background-color: #ffffffb5; /* Off-white background color */
+    color: #2f2f2f;
+    margin: 0;
+    padding: 0;
+}
+/* Header */
+header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #ffffffb5;
+    color: #2f2f2f;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds depth */
+}
+
+.logo {
+    display: inline-block;
+    text-align: center;
+}
+
+.logo-image {
+    display: inline-block;
+    height: 50px;
+    width: auto;
+    vertical-align: middle; /* Aligns logo with the text */
+}
+
+.logo-text {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    vertical-align: middle; /* Aligns text with the logo */
+    margin-left: 0.5rem; /* Adds spacing between logo and text */
+}
+
+
+.nav-menu {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-self: end;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #2f2f2f;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #2f2f2f; /* Gold hover */
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh; /* Full screen height */
+    overflow: hidden;
+}
+.hero-video {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire section */
+    z-index: -1; /* Places the video behind the text */
+}
+.hero-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.4); /* Optional: Semi-transparent overlay for better text visibility */
+}
+.hero-box {
+    max-width: 800px;
+    padding: 20px;
+}
+.hero-box h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+.hero-box span {
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Categories Section */
+#categories {
+    padding: 2rem;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.categories-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f8d57e; /* Gold */
+    margin-bottom: 2rem;
+}
+
+/* Categories Grid */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
+    gap: 1.5rem;
+}
+
+.categories figure {
+    margin: 0;
+    text-align: center;
+}
+
+.categories img {
+    width: 100%; /* Full width within grid column */
+    max-width: 250px; /* Maximum width for consistency */
+    height: 200px; /* Fixed height */
+    object-fit: contain; /* Ensures the image covers the dimensions proportionally */
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Depth for images */
+    transition: transform 0.3s ease; /* Adds smooth zoom effect */
+}
+
+.categories img:hover {
+    transform: scale(1.25); /* Zoom on hover */
+}
+
+.categories figcaption {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .categories img {
+        max-width: 200px; /* Adjust max width for smaller screens */
+        height: 150px; /* Reduce height for smaller devices */
+    }
+
+    .categories figcaption {
+        font-size: 1rem; /* Smaller font size for captions */
+    }
+}
+
+
+
+/* About Section */
+#about {
+    padding: 2.5rem;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+#about h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+#about p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #333;
+    color: #fff;
+}
+
+footer a {
+    color: #f8d57e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #d4af37; /* Darker gold on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .hero-box h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-box span {
+        font-size: 1.2rem;
+    }
+
+    .categories img {
+        height: 130px; /* Smaller height for mobile */
+    }
+
+    .categories figcaption {
+        font-size: 1rem;
+    }
+
+    #about h2 {
+        font-size: 2rem;
+    }
+
+    #about p {
+        font-size: 1rem;
+    }
+}
+/* Global Form Styles */
+form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Focus Validation Styles */
+input:focus:valid, select:focus:valid, textarea:focus:valid {
+    border-color: #28a745; /* Green border for valid input */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+input:focus:invalid, select:focus:invalid, textarea:focus:invalid {
+    border-color: #dc3545; /* Red border for invalid input */
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+/* Buttons */
+.form-buttons button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+button[type="reset"] {
+    background-color: #f8d57e;
+    color: #333;
+    margin-left: 1rem;
+}
+
+button[type="reset"]:hover {
+    background-color: #d4af37;
+}
