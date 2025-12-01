@@ -1,83 +1,35 @@
-name: PHP/JS CI/CD Pipeline
+name: FYF CI/CD Pipeline
 
-# Triggers the workflow on pushes to the 'master' branch
-# We use 'master' here because your previous Git output indicated 'master' is the main remote branch.
 on:
   push:
-    branches:
-      - master 
-  pull_request:
-    branches:
-      - master
-
-# Define the environment variables for deployment
-env:
-  FTP_SERVER: ${{ secrets.FTP_SERVER }}
-  FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-  FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-  FTP_PORT: 22 
-  # CRITICAL: Ensure this matches the target directory on your live server!
-  FTP_PATH: /public_html/fyf_project/ 
+    branches: [ "main", "master" ]
 
 jobs:
-  # =======================================================
-  # JOB 1: Continuous Integration (CI) - Linting and Checks
-  # =======================================================
-  ci_checks:
-    name: 🧪 CI Checks (PHP & JS)
+  build-and-test:
     runs-on: ubuntu-latest
-    steps:
-      - name: ⬇️ Checkout Code
-        uses: actions/checkout@v4
-
-      # --- PHP Syntax Check (Guarantees Build Success if PHP is valid) ---
-      - name: 🛠️ Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          
-      - name: 🔍 PHP Syntax Lint Check
-        # This command checks every *.php file for basic syntax errors.
-        run: find . -name "*.php" -print0 | xargs -0 -n1 php -l
-        
-      # --- JavaScript Lint Check (Placeholder) ---
-      - name: 🛠️ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: 🔍 Simple JavaScript Check
-        # This is a placeholder step and will always succeed.
-        run: echo "JS checks passed successfully."
-        
-  # =======================================================
-  # JOB 2: Continuous Deployment (CD) - Deploy to Web Server
-  # =======================================================
-  deployment:
-    name: 🚀 Deploy via SFTP
-    needs: ci_checks # Will NOT run if the 'ci_checks' fails
-    runs-on: ubuntu-latest
-    environment: production
 
     steps:
-      - name: ⬇️ Checkout Code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: 📤 SFTP Deployment to Web Host
-        uses: sebastianpeters/ftp-deploy-action@v3.2.0
-        with:
-          host: ${{ env.FTP_SERVER }}
-          user: ${{ env.FTP_USERNAME }}
-          password: ${{ env.FTP_PASSWORD }}
-          port: ${{ env.FTP_PORT }}
-          remote_path: ${{ env.FTP_PATH }}
-          exclude: |
-            .git*
-            .github
-            vendor/**
-            node_modules/**
-            # Exclude local XAMPP files
-            db.php # IMPORTANT: If you manage production db.php separately
-            
-      - name: 🎉 Deployment Successful
-        run: echo "Successfully deployed files. See the site at yourdomain.com/fyf_project/"
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+
+    - name: Install Composer
+      run: sudo apt-get update && sudo apt-get install -y composer
+
+    - name: Install dependencies
+      run: composer install
+
+    - name: Run PHPUnit tests
+      run: vendor/bin/phpunit
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deployment Simulation
+        run: echo "Application would be deployed here. All tests passed."
