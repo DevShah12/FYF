@@ -1,17 +1,22 @@
-# ... (Part of the build-and-test job)
-steps:
-      - name: ⬇️ Checkout Code
-        uses: actions/checkout@v4
+# ... (Part of the build-and-test job, assuming 'steps:' is indented correctly under the job)
 
-      - name: 🛠️ Setup Node.js
+    steps:
+      # Step 1: Checkout Code
+      - name: ⬇ Checkout Code
+        uses: actions/checkout@v4
+        
+      # Step 2: Setup Node.js
+      - name: 🛠 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: ⚙️ CI: Run Linting / Build Placeholder
-
-
-
-
-      
-# ... (rest of the file)
+          
+      # Step 3: Run Linting / Build Placeholder (This is likely line 11 or nearby)
+      - name: ⚙ CI: Run Linting / Build Placeholder 
+        # Add the 'run' command block here
+        run: |
+          echo "Starting linting and build checks..."
+          # Example commands you would run:
+          # npm install
+          # npm run lint
+          # npm run build
