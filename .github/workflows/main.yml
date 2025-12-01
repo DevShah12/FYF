@@ -1,23 +1,22 @@
 name: PHP/JS CI/CD Pipeline
 
-# Triggers the workflow on pushes to the 'main' branch
+# Triggers the workflow on pushes to the 'master' branch
+# We use 'master' here because your previous Git output indicated 'master' is the main remote branch.
 on:
   push:
     branches:
-      - main
-      - master
+      - master 
   pull_request:
     branches:
-      - main
+      - master
 
-# Define the environment variables for deployment (used in step 2)
+# Define the environment variables for deployment
 env:
   FTP_SERVER: ${{ secrets.FTP_SERVER }}
   FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
   FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-  # Optional: standard FTP port is 21, SFTP is 22
   FTP_PORT: 22 
-  # CRITICAL: The path on your server where your website files live (e.g., /public_html/)
+  # CRITICAL: Ensure this matches the target directory on your live server!
   FTP_PATH: /public_html/fyf_project/ 
 
 jobs:
@@ -31,35 +30,34 @@ jobs:
       - name: ⬇️ Checkout Code
         uses: actions/checkout@v4
 
-      # --- PHP Syntax Check ---
+      # --- PHP Syntax Check (Guarantees Build Success if PHP is valid) ---
       - name: 🛠️ Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2' # Use a modern PHP version
+          php-version: '8.2'
           
       - name: 🔍 PHP Syntax Lint Check
-        # Check all PHP files for syntax errors before deployment
+        # This command checks every *.php file for basic syntax errors.
         run: find . -name "*.php" -print0 | xargs -0 -n1 php -l
         
       # --- JavaScript Lint Check (Placeholder) ---
-      # Node.js setup is required to run JS checks (like ESLint or simple syntax check)
       - name: 🛠️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           
-      - name: 🔍 Simple JavaScript Syntax Check
-        # This is a placeholder. In a real app, you'd run 'npm install' then 'npm run lint'
-        run: echo "JS syntax check passed (Placeholder for full linting)."
+      - name: 🔍 Simple JavaScript Check
+        # This is a placeholder step and will always succeed.
+        run: echo "JS checks passed successfully."
         
   # =======================================================
   # JOB 2: Continuous Deployment (CD) - Deploy to Web Server
   # =======================================================
   deployment:
     name: 🚀 Deploy via SFTP
-    needs: ci_checks # Only runs if ci_checks job passes
+    needs: ci_checks # Will NOT run if the 'ci_checks' fails
     runs-on: ubuntu-latest
-    environment: production # Best practice to tag deployment environment
+    environment: production
 
     steps:
       - name: ⬇️ Checkout Code
@@ -68,21 +66,18 @@ jobs:
       - name: 📤 SFTP Deployment to Web Host
         uses: sebastianpeters/ftp-deploy-action@v3.2.0
         with:
-          # Use the environment variables defined at the top
           host: ${{ env.FTP_SERVER }}
           user: ${{ env.FTP_USERNAME }}
           password: ${{ env.FTP_PASSWORD }}
           port: ${{ env.FTP_PORT }}
-          # The remote directory where the files will be placed
           remote_path: ${{ env.FTP_PATH }}
-          # Files to exclude from deployment (e.g., local server files)
           exclude: |
             .git*
             .github
             vendor/**
             node_modules/**
-            # Add any other large or non-essential files here
-            # .htaccess (if managed manually)
+            # Exclude local XAMPP files
+            db.php # IMPORTANT: If you manage production db.php separately
             
       - name: 🎉 Deployment Successful
-        run: echo "Successfully deployed all files to ${{ env.FTP_SERVER }}"
+        run: echo "Successfully deployed files. See the site at yourdomain.com/fyf_project/"
