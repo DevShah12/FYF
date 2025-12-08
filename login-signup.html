@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FindYourFashion - Personalized and engaging clothing shopping experience">
+    <meta name="keywords" content="fashion, clothing, personalized shopping, online store">
+    <title>FindYourFashion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <a href="index.html" title="Go to Home">
+                <img src="app_logo.png" alt="FindYourFashion Logo" class="logo-image">
+                </a>
+            <span><a href="index.html" title="Go to Home" class="logo-text">FindYourFashion</a></span></div>
+        
+        </div>
+        <marquee id="countdown">  </marquee>
+    </header>
+
+    
+
+<!-- Hero Section -->
+<section class="hero">
+    <video autoplay muted loop class="hero-video">
+        <source src="FYFvideo.mp4" type="video/mp4">
+        Your browser does not support the video.
+        </video>
+        <div class="hero-text">
+        <div class="hero-box">
+            <h2>User Login</h2>
+            <span>Sign up or login to discover the best in fashion.</span>
+        </div>
+</section>
+
+         <!-- Form Section -->
+    <section class="form-container">
+        <div class="form-box">
+            <form id="login-signup-form">
+                <!-- Name (Signup only) -->
+                <div class="form-field" id="name-field">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <small id="name-error" class="error-message"></small>
+                </div>
+
+                <!-- Phone Number (Signup only) -->
+                <div class="form-field" id="phone-field">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    <small id="phone-error" class="error-message"></small>
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-field">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <small id="email-error" class="error-message"></small>
+                </div>
+
+                <!-- Password -->
+                <div class="form-field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <small id="password-error" class="error-message"></small>
+                </div>
+
+                <!-- Confirm Password (Signup only) -->
+                <div class="form-field" id="confirm-password-field">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                    <small id="confirm-password-error" class="error-message"></small>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-field">
+                    <button type="submit" id="submit-btn">Login</button>
+                </div>
+
+                <!-- Toggle between Login and Signup -->
+                <div class="toggle-links">
+                    <p id="toggle-link">Don't have an account? <a href="javascript:void(0)" id="toggle-form">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-links">
+            <p>&copy; 2024 FindYourFashion</p>
+            <a href="index.html" title="Back to Home">Back to Home</a> | 
+            <a href="feedback.html" title="Provide Feedback">Feedback</a> | 
+            <a href="mailto:info@findyourfashion.com" title="Email Us">Contact Us</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

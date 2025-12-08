@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FindYourFashion - Personalized and engaging clothing shopping experience">
+    <meta name="keywords" content="fashion, clothing, personalized shopping, online store">
+    <title>FindYourFashion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <a href="index.html" title="Go to Home">
+                <img src="app_logo.png" alt="FindYourFashion Logo" class="logo-image">
+                </a>
+            <span><a href="index.html" title="Go to Home" class="logo-text">FindYourFashion</a></span></div>
+        
+        </div>
+    
+        <nav>
+            
+            <ul>
+                <ul class="nav-menu">
+            <li><a href="javascript:void(0)" id="manage-orders">Manage Orders</a></li>
+            <li><a href="javascript:void(0)" id="manage-products">Manage Products</a></li>
+            <li><a href="javascript:void(0)" id="manage-users">Manage Users</a></li>
+        </ul>
+            </ul>
+        </nav>
+
+         <marquee id="countdown">  </marquee>
+    </header>
+
+
+
+<!-- Hero Section -->
+<section class="hero">
+    <video autoplay muted loop class="hero-video">
+        <source src="FYFvideo.mp4" type="video/mp4">
+        Your browser does not support the video.
+        </video>
+        </div>
+</section>
+
+         <!-- Main Content Section -->
+    <div class="main-content">
+        <h1>Welcome, Admin!</h1>
+
+        <!-- Orders Management Section -->
+        <section id="orders-section">
+            <h2>Manage Orders</h2>
+            <button id="add-order-btn">Add New Order</button>
+            <table id="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>User Name</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Products Management Section -->
+        <section id="products-section" style="display:none;">
+            <h2>Manage Products</h2>
+            <button id="add-product-btn">Add New Product</button>
+            <table id="products-table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Users Management Section -->
+        <section id="users-section" style="display:none;">
+            <h2>Manage Users</h2>
+            <button id="add-user-btn">Add New User</button>
+            <table id="users-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </div>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-links">
+            <p>&copy; 2024 FindYourFashion</p>
+            <a href="index.html" title="Back to Home">Back to Home</a> | 
+            <a href="feedback.html" title="Provide Feedback">Feedback</a> | 
+            <a href="mailto:info@findyourfashion.com" title="Email Us">Contact Us</a>
+        </div>
+    </footer>
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>
